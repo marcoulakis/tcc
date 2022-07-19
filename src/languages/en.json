@@ -1,0 +1,21 @@
+{
+    "translation":{
+        "home":
+        {
+
+        },
+        "settings":
+        {
+            "themeSwitcher":{
+                "title":"Theme",
+                "dark":"Dark",
+                "light":"Light"
+            },
+            "languageSwitcher":{
+                "title":"Language",
+                "chosenLanguage": "English"
+            }
+        },
+        "profile":"Profile"
+    }
+}

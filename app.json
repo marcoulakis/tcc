@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "Tabnews",
+    "slug": "tabnews",
+    "icon": "./assets/icon.png",
+    "version": "0.0.0",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "0",
+      "supportsTablet": true,
+      "bundleIdentifier": "android.marcoulakis.tabnews",
+      "infoPlist": {
+      }
+    },
+    "android": {
+      "versionCode": 0,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.marcoulakis.tabnews.app"
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    }
+  }
+}

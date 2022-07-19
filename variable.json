@@ -1,0 +1,6 @@
+{
+    "host":"www.tabnews.com.br",
+    "protocol": "https",
+    "api_version_path": "/api/v1/contents",
+    "main_path": "/"
+}
