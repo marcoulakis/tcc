@@ -3,6 +3,7 @@ import { StatusBar, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import ApiRequest from '../services/Api';
+import { useNavigation } from '@react-navigation/native';
 
 const convertTimeToTimestamp = (time) => {
   return new Date(time).getTime() /1000;
@@ -31,39 +32,46 @@ const Home = () => {
     ApiRequest.mainPage(setPosts);
   }
 
+  const navigation = useNavigation();
+
   return (
   <ThemeProvider theme={theme}>
     <StatusBar barStyle={theme.STATUS_BAR_STYLE} />
     <Container>
       <ItemContainer>
-        <FlatList  
-          contentContainerStyle={{
-            paddingBottom: "32%",
-          }} 
-          data={posts}
-          renderItem={({item}) =>
+        {
+          posts ?
+          <FlatList  
+            contentContainerStyle={{
+              paddingBottom: "32%",
+            }} 
+            data={posts}
+            renderItem={({item}) =>
 
-            <Item style={(item === posts[0] ? {} :{borderTopWidth: 1})}>
-              <TitleContainer onPress={() =>{
-                ApiRequest.posts({
-                username: item.username,
-                slug: item.slug
-              }, setSelectedPosts);
-              }}>
-                <Title>{(item.title).toString()}</Title>
-              </TitleContainer>
-              <DataContainer>
-                <Text>{(item.tabcoins)+ " tabcoins"}</Text>
-                <Separator>·</Separator>
-                <Text>{(item.children_deep_count) + " comentários"}</Text>
-                <Separator>·</Separator>
-                <Text>{(item.username)}</Text>
-                <Separator>·</Separator>
-                <Text>{calculateWhenPostedWasCreated(item.created_at).toString()}</Text>
-              </DataContainer>
-            </Item>
-          }>
-        </FlatList>
+              <Item style={(item === posts[0] ? {} :{borderTopWidth: 1})}>
+                <TitleContainer onPress={() =>{
+                  navigation.navigate('Post', {username: item.username, slug: item.slug});
+                }}>
+                  <Title>{(item.title).toString()}</Title>
+                </TitleContainer>
+                <DataContainer>
+                  <Text>{(item.tabcoins)+ " tabcoins"}</Text>
+                  <Separator>·</Separator>
+                  <Text>{(item.children_deep_count) + " comentários"}</Text>
+                  <Separator>·</Separator>
+                  <Text>{(item.username)}</Text>
+                  <Separator>·</Separator>
+                  <Text>{calculateWhenPostedWasCreated(item.created_at).toString()}</Text>
+                </DataContainer>
+              </Item>
+            }>
+          </FlatList>
+          :
+          <CenteredView>
+            <ActivityIndicator size={90} />
+          </CenteredView>
+
+        }
       </ItemContainer>
     </Container>
   </ThemeProvider>
@@ -78,6 +86,17 @@ const Container = styled.SafeAreaView`
 
 const ItemContainer = styled.View`
   width: 100%;
+`;
+
+const CenteredView = styled.View`
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+`;
+
+const ActivityIndicator = styled.ActivityIndicator`
+  color: ${props => props.theme.mainTextColor};
 `;
 
 const Item = styled.View`  

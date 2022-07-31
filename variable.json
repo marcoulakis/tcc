@@ -1,6 +1,13 @@
 {
-    "host":"www.tabnews.com.br",
-    "protocol": "https",
+    "host1":"www.tabnews.com.br",
+    "protocol1": "https",
+    "host":"10.0.0.155",
+    "protocol": "http",
     "api_version_path": "/api/v1/contents",
-    "main_path": "/"
+    "main_path": "/",
+    "login_path": "/auth/login",
+    "username_path": "/auth/username",
+    "email_path": "/auth/email",
+    "signup_path": "/auth/register",
+    "verify_path": "/auth/verify"
 }

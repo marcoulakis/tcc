@@ -7,6 +7,7 @@ export const lightTheme = {
     tabBarBackgroundColor: "#333333",
     popupBackgroundColor: "#333333",
     popupTextColor: "#E5E5E5",
+    inputBorderColor: "'#333333'",
 
 }
 
@@ -19,6 +20,5 @@ export const darkTheme = {
     tabBarBackgroundColor: "#E5E5E5",
     popupBackgroundColor: "#E5E5E5",
     popupTextColor: "#000000",
-
-
+    confirmBackgroundColor: "#22c751"
 }
